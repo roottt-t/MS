@@ -11,8 +11,8 @@ body {
 .container {
     /* max-width: 900px; Constrain width to a more readable size */
     width: 100%;
-    margin: 10px;
-    padding: 10px;
+    margin: 5px;
+    padding: 5px;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -153,7 +153,8 @@ main {
 /* Ingredients and Recipes Section */
 .recipes-section {
     width: 100%;
-    max-width: 600px;
+    max-width: 800px;
+    /* padding: 20px; */
     margin: 20px 0;
     text-align: left;
 }
