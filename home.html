@@ -321,19 +321,51 @@
             
         }
 
+        // function displayRecipes(recipes) {
+        //     console.log(recipes);
+        //     const recipesList = document.getElementById('recipesList');
+        //     recipesList.innerHTML = ''; // Clear existing list
+        //     recipes.forEach(recipe => {
+        //         const listItem = document.createElement('li');
+
+        //         const stepsText = recipe.steps.map(stepObj => stepObj.step).join(" ");
+
+        //             listItem.innerHTML = `<strong>${recipe.name}</strong><br><br>Ingredients: ${recipe.ingredients.join(", ")}<br>Steps: ${stepsText.replace(/\n/g, "<br>")}`;
+        //             recipesList.appendChild(listItem);
+        //     });
+        //  }
         function displayRecipes(recipes) {
             console.log(recipes);
             const recipesList = document.getElementById('recipesList');
             recipesList.innerHTML = ''; // Clear existing list
+
             recipes.forEach(recipe => {
                 const listItem = document.createElement('li');
+                listItem.style.marginBottom = "20px"; // Add spacing between recipes
 
-                const stepsText = recipe.steps.map(stepObj => stepObj.step).join(" ");
+                // Format ingredients as a bullet list
+                const ingredientsList = recipe.ingredients
+                    .map(ingredient => `<li>${ingredient}</li>`)
+                    .join("");
 
-                    listItem.innerHTML = `<strong>${recipe.name}</strong><br>Ingredients: ${recipe.ingredients.join(", ")}<br>Steps: ${stepsText.replace(/\n/g, "<br>")}`;
-                    recipesList.appendChild(listItem);
+                // Format steps as a numbered list
+                const stepsList = recipe.steps
+                    .map((stepObj, index) => `<li>${index + 1}. ${stepObj.step}</li>`)
+                    .join("");
+
+                // Add structured content to the recipe item
+                listItem.innerHTML = `
+                    <h2 style="color: #FF7F50; font-family: Arial, sans-serif;">${recipe.name}</h2>
+                    <h3 style="margin-bottom: 5px;padding-left: 10px;">Ingredients:</h3>
+                    <ul style="padding-left: 20px; margin-bottom: 10px;">${ingredientsList}</ul>
+                    <h3 style="margin-bottom: 5px;padding-left: 10px;">Steps:</h3>
+                    <ol style="padding-left: 20px;">${stepsList}</ol>
+                `;
+
+                recipesList.appendChild(listItem);
             });
-         }
+        }
+
 
 
     </script>
